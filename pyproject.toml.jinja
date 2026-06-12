@@ -1,0 +1,30 @@
+[project]
+name = "{{ project_name }}"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">={{ python_version }}"
+
+dependencies = [
+    "numpy",
+    "pandas",
+]
+
+[project.scripts]
+{{ package_name }} = "{{ package_name }}.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ipykernel",
+    "ruff",
+]

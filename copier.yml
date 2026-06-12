@@ -1,0 +1,23 @@
+project_name:
+  type: str
+  help: Project name
+
+package_name:
+  type: str
+  help: Python package name
+  default: "{{ project_name | lower | replace('-', '_') }}"
+
+author_name:
+  type: str
+  help: Author name
+  default: Darren Kidney
+
+python_version:
+  type: str
+  help: Python version
+  default: "3.12"
+
+_tasks:
+  - "uv python install {{ python_version }}"
+  - "uv venv .venv --prompt .venv --python {{ python_version }}"
+  - "uv sync"
