@@ -1,12 +1,13 @@
 project_name:
   type: str
   help: Project name
+  default: "{{ _copier_conf.dst_path | basename if _copier_conf.dst_path != '.' else 'my-project' }}"
 
 package_name:
   type: str
   help: Python package name
   default: "{{ project_name | lower | replace('-', '_') }}"
-
+  
 author_name:
   type: str
   help: Author name
